@@ -82,5 +82,15 @@ public class LoggingController {
 	public String showDashboard() {
 		return "adminDashboard";
 	}
+	
+	@GetMapping("/news_manage")
+	public String manageNews() {
+		return "news_manage";
+	}
+		
+	@GetMapping("/users")
+	public String manageUsers() {
+		return "users";
+	}
 
 }
