@@ -40,6 +40,24 @@ public class NewsDao {
 		return list;
 	}
 
+//	public ArrayList<CategoryResponseDto> selectAllNews() {
+//		ArrayList<CategoryResponseDto> list = new ArrayList<>();
+//		String sql = "select * from news";
+//		try {
+//			PreparedStatement ps = con.prepareStatement(sql);
+//			ResultSet rs = ps.executeQuery();
+//			while (rs.next()) {
+//				CategoryResponseDto res = new CategoryResponseDto();
+//				res.setNews_category_id(rs.getLong("news_category_id"));
+//				res.setNews_category_name(rs.getString("news_category_name"));
+//				list.add(res);
+//			}
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+//		return list;
+//	}
+
 	public int insertNews(NewsRequestDto dto) {
 		String sql = "insert into news (news_name, descriptions, news_img, news_location, news_category) values(?, ?, ?, ?, ?)";
 		int i = 0;
