@@ -7,13 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.ace.hexa.dao.NewsDao;
 import com.ace.hexa.dto.CategoryResponseDto;
 import com.ace.hexa.dto.NewsRequestDto;
+import com.ace.hexa.model.NewsBean;
 import com.ace.hexa.service.FileUploadService;
 
 @Controller
@@ -27,22 +29,22 @@ public class NewsController {
 	private FileUploadService fileUploadService;
 
 	@GetMapping("/setupCreateNews")
-	public String setupCreateNews(ModelMap model) {
+	public ModelAndView setupCreateNews(ModelMap model) {
 		ArrayList<CategoryResponseDto> news_categories = newsDao.selectAllNewsCategory();
 		model.addAttribute("news_categories", news_categories);
-		return "news_create";
+		return new ModelAndView("news_create", "newsBean", new NewsBean());
 	}
 
 	@PostMapping("/createNews")
-	public String createNews(String news_name, long news_category, String news_location, String descriptions,
-			MultipartFile file, ModelMap model) throws IllegalStateException, IOException {
+	public String createNews(@ModelAttribute("newsBean") NewsBean bean, ModelMap model)
+			throws IllegalStateException, IOException {
 		NewsRequestDto dto = new NewsRequestDto();
-		dto.setNews_name(news_name);
-		dto.setNews_category(news_category);
-		dto.setDescriptions(descriptions);
-		dto.setNews_location(news_location);
-		dto.setNews_img(file.getOriginalFilename());
-		fileUploadService.fileUpload(file);
+		dto.setNews_name(bean.getNews_name());
+		dto.setNews_category(bean.getNews_category());
+		dto.setDescriptions(bean.getDescriptions());
+		dto.setNews_location(bean.getNews_location());
+		dto.setNews_img(bean.getNews_img().getOriginalFilename());
+		fileUploadService.fileUpload(bean.getNews_img());
 		newsDao.insertNews(dto);
 		model.addAttribute("post_msg", "Successfully Created");
 		return "news_create";

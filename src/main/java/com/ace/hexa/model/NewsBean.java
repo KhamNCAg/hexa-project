@@ -2,6 +2,8 @@ package com.ace.hexa.model;
 
 import java.time.LocalDate;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -9,7 +11,7 @@ public class NewsBean {
 	private long news_id;
 	private String news_name;
 	private String descriptions;
-	private String news_img;
+	private MultipartFile news_img;
 	private String news_location;
 	private String news_status;
 	private long news_category;

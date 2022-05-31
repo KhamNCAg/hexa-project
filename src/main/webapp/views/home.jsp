@@ -29,13 +29,13 @@
 
 <body>
 	
-	<%
+<%-- 	<%
 	if(session.getAttribute("userInfo") == null){
 		System.out.println("not a user");
 	} else {
 		System.out.println("user");
 	}
-	%>	
+	%> --%>	
 	
 	<!-- navbar -->
 	<section id="navbar" class="navbar navbar-expand sticky-top">

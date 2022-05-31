@@ -56,49 +56,49 @@
 				</div>
 			</div>
 			<div style="max-width: 80%; padding-left: 50px;">
-				<form action="/hexa/dashboard/createNews" method="post"
+				<form:form action="/hexa/dashboard/createNews" method="post" modelAttribute="newsBean"
 					enctype="multipart/form-data">
 					<div class="mb-3 row">
 						<label for="name" class="col-sm-2 col-form-label">Headline</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="news_name" required>
+							<form:input type="text" class="form-control" path="news_name" required="required"/>
 						</div>
 					</div>
 					<div class="mb-3 row">
 						<label class="col-sm-2 col-form-label">Category</label>
 						<div class="col-sm-10">
-							<select class="form-control" id="exampleFormControlSelect1"
-								name="news_category" required>
+							<form:select class="form-control" id="exampleFormControlSelect1"
+								path="news_category" required="required">
 
 								<c:forEach var="category" items="${news_categories}">
 									<option value="${category.news_category_id}">${category.news_category_name}</option>
 								</c:forEach>
 
-							</select>
+							</form:select>
 						</div>
 					</div>
 					<div class="mb-3 row">
 						<label for="name" class="col-sm-2 col-form-label">Location</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="news_location"
-								required>
+							<form:input type="text" class="form-control" path="news_location"
+								required="required"/>
 						</div>
 					</div>
 					<div class="mb-3 row">
 						<label class="col-sm-2 col-form-label">Description</label>
 						<div class="col-sm-10">
-							<textarea class="form-control" id="exampleFormControlTextarea1"
-								name="descriptions" required rows="5"></textarea>
+							<form:textarea class="form-control" id="exampleFormControlTextarea1"
+								path="descriptions" required="required" rows="5"></form:textarea>
 						</div>
 					</div>
 					<div class="mb-3 row">
 						<label for="exampleFormControlFile1">Image</label>
 						<div class="col-sm-10">
-							<input type="file" class="form-control-file" name="file" required>
+							<form:input type="file" class="form-control-file" path="news_img" required="required"/>
 						</div>
 					</div>
 					<input type="submit" value="Post News">
-				</form>
+				</form:form>
 
 			</div>
 
