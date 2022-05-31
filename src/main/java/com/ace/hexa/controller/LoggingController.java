@@ -66,7 +66,7 @@ public class LoggingController {
 			dto.setUser_email(user.getUser_email());
 			dto.setUser_password(user.getUser_password());
 			userDao.insertUser(dto);
-			return "login";
+			return "redirect:/hexa/showLogin";
 		}
 		request.setAttribute("error", "<h3>A user with that email already exists !!</h3>");
 //		model.addAttribute("error", "<h3>A user with that email already exists !!</h3>");

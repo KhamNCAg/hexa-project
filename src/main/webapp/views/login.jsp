@@ -35,7 +35,7 @@
 		<header class="card-title text-center text">
 			<span class="h3 w-100 text">Hex</span>
 		</header>
-		<div class="text-danger text-center">${error }</div>
+		<div class="text-danger text-center">${error}</div>
 		<form:form action="/hexa/login" class="card-body form" name="login"
 			method="post" modelAttribute="bean">
 			<div class="form-group my-3">
